@@ -1,0 +1,5 @@
+{% block content %}
+{{object.name}}|{{object.completed}}
+<a href="{% url 'update' object.id %}">Edit</a>
+<a href="{% url 'delete' object.id %}">Delete</a>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+<html>
+    <head>
+           
+        <title>
+            {% block title %}
+                Home
+            {% endblock title %}
+           
+        </title>
+        
+    </head>
+    <body>        
+        {% block content %}
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+       
+
+          
+        <img src="{% static 'images/Tulips.jpg' %}" width="200px" height="300px"/>
+        <script src="{% static 'js/change.js' %}"></script>
+            Home body
+            <h1>Current time is : {{currentTime}}</h1>
+            <h1 id="here">Length : {{"Hello World"|length}}</h1>
+            <h1>Lower : {{"Hello World"|lower}}</h1>
+            <h1>Upper : {{"Hello World"|upper}}</h1>
+            <input type="button" value="click" onclick="fn()"/>
+
+            {% for char in "Hello World" %}
+            {{char}}
+            {% endfor %}
+
+            <form action="add" method="POST">
+                {% csrf_token %}
+                <input type="text" name="n1"/>
+                <input type="text" name="n2"/>
+                <input type="submit" value="Submit"/>
+            </form>
+
+            {% for f1 in f %}
+            {{f1.name}}{{f1.completed}}
+            {% endfor %}
+
+            {% if f %}
+            <table class="table table-hover">
+                <tr class="thead-dark"><th>Name</th><th>Completed</th></tr>
+                {% for f1 in f %}
+                <tr>
+                    <td><a href="{% url 'detail' f1.id %}">{{f1.name}}</a></td>
+                    <td>{{f1.completed}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        {% endblock %} 
+    </body>
+</html>

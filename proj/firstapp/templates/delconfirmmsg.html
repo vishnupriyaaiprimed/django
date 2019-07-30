@@ -1,0 +1,8 @@
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+Do you really want to delete me? :(
+    <a class="btn" href="{% url 'home' %}">No</a>
+    <button type="submit">Yes</button>
+    </form>
+{% endblock %}
